@@ -1,11 +1,11 @@
 import numpy as np
 import numexpr as ne
 
-from globals import params as p
-from globals import grids as g
-import thermal as therm
-import topo
-import rheo
+from .globals import params as p
+from .globals import grids as g
+from . import thermal as therm
+from . import topo as topo
+from . import rheo as rheo
 
 ################################################################################
 # Time Updating Operations

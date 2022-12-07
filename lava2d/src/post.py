@@ -2,12 +2,12 @@ import numpy as np
 
 from datetime import *
 
-import rheo
-import thermal as therm
-import vents
+from . import rheo as rheo
+from . import thermal as therm
+from . import vents as vents
 
-from globals import params as p
-from globals import grids as g
+from .globals import params as p
+from .globals import grids as g
 
 
 # Post Processing

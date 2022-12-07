@@ -5,13 +5,13 @@ import rasterio
 from rasterio.warp import transform
 from rasterio.transform import Affine
 
-from globals import params as p
-from globals import grids as g
+from lava2d.src.globals import params as p
+from lava2d.src.globals import grids as g
 
-import muscl as m
-import rheo
-import thermal as therm
-import post
+from . import muscl as m
+from . import rheo as rheo
+from . import thermal as therm
+from . import post as post
 
 ################################################################################
 ################################################################################

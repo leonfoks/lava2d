@@ -1,6 +1,6 @@
 import numpy as np
-import thermal as therm
-from globals import params as p
+from . import thermal as therm
+from .globals import params as p
 ################################################################################
 # Rheological Model
 ################################################################################

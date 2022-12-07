@@ -1,4 +1,4 @@
-import sim
+import lava2d as sim
 #
 visc_melt_vent_dense = 200
 vesic = 0.25
@@ -10,7 +10,7 @@ sim_num = 1
 #
 #-------------------------------------------------------------------------------
 sim.set_topo( # set DEM info
-    path_to_dem_file    = ('example_vents//ned_10m_dem.tif'),
+    path_to_dem_file    = ('ned_10m_dem.tif'),
     Lon_SRC             = -155.531147, # source longitude
     Lat_SRC             = 19.513278,   # source latitude
     Lon_LowerLeft       = -155.541, # bounding box: lower-left longitude
@@ -31,7 +31,7 @@ sim.set_output( # where to store out.nc?
 #
 #-------------------------------------------------------------------------------
 sim.set_source( # set vent/fissure info: where is vent_nn.txt located?
-    path_to_vent_files      = ('example_vents//vent_01.txt')
+    path_to_vent_files      = ('..//example_vents//vent_01.txt')
     )
 
 #-------------------------------------------------------------------------------

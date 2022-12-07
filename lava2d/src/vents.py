@@ -4,7 +4,7 @@ from pandas import read_csv
 import glob
 import os
 
-from globals import params as p
+from .globals import params as p
 
 ################################################################################
 #

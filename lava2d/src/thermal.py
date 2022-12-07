@@ -1,8 +1,8 @@
 import numpy as np
 from scipy.special import erf
 from scipy.special import erfc
-import rheo
-from globals import params as p
+from . import rheo as rheo
+from .globals import params as p
 ################################################################################
 # Energy Equation Components
 ################################################################################

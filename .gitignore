@@ -1,1 +1,17 @@
 example_vents/
+*.pyc
+*.nc
+*.tif
+*__pycache__*
+*egg-info*
+*DS_Store
+images/
+.ipynb_checkpoints
+build
+*.so
+*.swp
+*.swo
+*.vtk
+*.egg
+*.md5
+*.pickle

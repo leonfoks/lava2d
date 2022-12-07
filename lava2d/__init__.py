@@ -1,17 +1,17 @@
+import os
 import numpy as np
 import time as clock
-import os
 from netCDF4 import Dataset
 
-from globals import params as p
-from globals import grids as g
+from .src.globals import params as p
+from .src.globals import grids as g
 
-import topo
-import rheo
-import vents
-import thermal as therm
-import muscl as m
-import post
+from .src import topo
+from .src import rheo
+from .src import vents
+from .src import thermal as therm
+from .src import muscl as m
+from .src import post
 
 
 def restrict_grids():

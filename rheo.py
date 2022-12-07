@@ -1,5 +1,4 @@
 import numpy as np
-import numexpr as ne
 import thermal as therm
 from globals import params as p
 ################################################################################
@@ -49,13 +48,15 @@ def fluidity(T, phi):
     return np.maximum(1 - phi/p.phi_max, 0)**2.5 / melt_viscosity(T)
 
 def cryst_avrami(t, te, I):
+    # params, could be precalculated
     n = 4
-    t_active = 1.0 * (t - te[I]) # (n_active,) # core arrival in terms of surface transit time
-    C_vent = np.log(1. / (1. - p.cryst_vent))**(1./n)
-    lam = (np.exp(n-1)/(n*(n-1)**(n-1)))**(1./n) * p.max_cryst_rate
+    k = (p.max_cryst_rate/(n*p.phi_inf))**n * ((n-1.)/(n*np.exp(1)))**(1.-n)
+    t_init = (np.log(p.phi_inf/(p.phi_inf - p.cryst_vent)) / k)**(1./n)
     #
+    surface_age = t - te[I]
+    t_bulk = 1.0 * surface_age # (n_active,) # core arrival in terms of surface transit time
     phi = np.zeros(te.shape, dtype = te.dtype) # (rows, cols)
-    phi[I] = 1 - np.exp(-(C_vent + lam*t_active)**n)
+    phi[I] = p.phi_inf * (1 - np.exp(-k*(t_init + t_bulk)**n))
     return phi
 
 def yield_stress(phi):
@@ -170,7 +171,7 @@ def dBdt(t, ti, h, T_core, U_s, fluidity_core, q_n):
     #
     out = np.zeros(h.shape)
     #
-    valid = h > p.tiny_flow
+    valid = np.logical_and(h > p.tiny_flow, ti < t)
     if np.any(valid):
         #
         h_v = h[valid]

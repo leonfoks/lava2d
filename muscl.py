@@ -1,13 +1,9 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from scipy import signal
-from scipy import interpolate
 import numexpr as ne
 
 from globals import params as p
 from globals import grids as g
 import thermal as therm
-import vents
 import topo
 import rheo
 
@@ -27,9 +23,6 @@ def update_inundation_times(t_inundation, h_n, t, dt):
     t_inundation[not_inundated_last] = t # all un-inundated cells --> time t
     t_inundation[update_t_in] = t - 0.5*dt # all recently inundated cells --> time t-dt/2
     return t_inundation
-
-
-
 
 
 def update_te_from_advection(te, Rsurf_n, neg_grad_S, h2_RRUU, h2_LLDD, max_h2, q_n, dxy, t_n, dt, is_uphill_flow, I, I_ij):
@@ -946,3 +939,36 @@ def step_KT2000_FD2_OSI(h, B_n, te, ti, q_n, abs_U_s, t_n, I):
 ################################################################################
 #
 ################################################################################
+
+
+# Lava2D -- too boring?
+
+# HiPrFlow-2D: High-Prandtl Flow in 2D -- too weird?
+
+# ThermaFlow -- too pharma sounding?
+
+# LavaFOR: Lava Forecasting for Operations and Research (Python version would be Lava4Py) -- too hard to remember?
+
+# BSALT: Basic System for Advecting Lava and Temperature  -- also too hard -- too app-like?
+
+# GOLF: Generalized Operational Lava Flow model -- I do not like golf
+
+# lol please halp
+
+# TEQUILA: The EQUations for Integrated Lava Advection
+
+# Thermal Stratification
+
+# Differential Advection of Thermally Stratified Flows/Laminae/Lava
+
+
+# BASALT :
+# SALT:
+# Stratified
+# Advection of
+# Lava and
+# Temperature
+
+# BA:
+# Basic/Bivariate Algorithm for
+# Bilinear/bicubic interpolation Algorithm for (if convert to a semi-lagrangian scheme)

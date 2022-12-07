@@ -1,15 +1,10 @@
 import numpy as np
 import scipy.interpolate as sci
-import pandas as pd
+from pandas import read_csv
 import glob
 import os
-import numexpr as ne
 
 from globals import params as p
-from globals import grids as g
-import thermal as therm
-import topo
-import rheo
 
 ################################################################################
 #
@@ -53,7 +48,8 @@ def read_source_data():
     files = glob.glob(files_to_search)
     for n in range(len(files)):
         # open each vent file:
-        db = pd.read_csv(files[n], header = 0, delimiter = '\t')
+        db = read_csv(files[n], header = 0, delimiter = '\t')
+        db['discharge'] = db['discharge'] / p.porosity # convert from DRE to Bulk Effusion Rate
         db.dropna(inplace = True)
         data = db.to_numpy().T
         times = data[0]

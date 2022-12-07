@@ -1,10 +1,8 @@
 import numpy as np
 from scipy.special import erf
 from scipy.special import erfc
-import numexpr as ne
 import rheo
 from globals import params as p
-from globals import grids as g
 ################################################################################
 # Energy Equation Components
 ################################################################################

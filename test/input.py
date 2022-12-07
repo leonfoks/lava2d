@@ -6,7 +6,7 @@ phi_max = 0.6
 phi_inf = 0.58
 max_cryst_rate = 0.1e-4
 yield_strength_crust = 4e4
-sim_num = 1
+sim_num = None
 #
 #-------------------------------------------------------------------------------
 sim.set_topo( # set DEM info
@@ -25,7 +25,8 @@ sim.set_topo( # set DEM info
 #
 #-------------------------------------------------------------------------------
 sim.set_output( # where to store out.nc?
-    path_out =  ('sim_{:04d}'.format(sim_num))
+    # path_out =  ('sim_{:04d}'.format(sim_num)),
+        simulation_tag = 'sim_{}'.format(sim_num)
     )
 
 #
@@ -96,8 +97,8 @@ sim.set_numerics( # set numerical method details
 #-------------------------------------------------------------------------------
 sim.set_runtime(
     max_iter = None, #one of them can be none, so the default value for both is none, if both none run till killed
-    max_time_hr = 1*24, # hr
-    out_times = [i*24. for i in range(1,1)], # hr, list of intermediate output times
+    max_time_hr = 1*2, # hr
+    out_times = [i*2. for i in range(1,2)], # hr, list of intermediate output times
     run_to_ocean = True
     )
 #

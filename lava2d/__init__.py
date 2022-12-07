@@ -227,15 +227,14 @@ def set_runtime(
         p.max_iter = np.inf
 #
 #-------------------------------------------------------------------------------
-def set_output(
-    path_out = ''
-    ):
+def set_output(path_out = '.', simulation_tag=''):
     #
     # if does not exist, make it
-    path_out = os.path.join(path_out, '')
+    # path_out = os.path.join(path_out)
     os.makedirs(path_out, exist_ok = True)
     #
     p.path_out = path_out
+    p.simulation_tag = simulation_tag
 #
 #-------------------------------------------------------------------------------
 def set_init(
@@ -388,7 +387,13 @@ def run(mapdata_file = None):
     # Write Output:
     print('| --- Writing Output --- |')
     sim_metadata = [dts, step_times, n_nodes, model_clock_ratio, wall_t1-wall_t0, vol_error, dt, t_n]
-    write_nc(sim_metadata)
+
+    if p.simulation_tag is not None:
+        file = 'out_{}.nc'.format(p.simulation_tag)
+    else:
+        file = 'out.nc'
+
+    write_nc(sim_metadata, file)
 #
 #-------------------------------------------------------------------------------
 def initialize(init_type = None, file = None):
@@ -532,15 +537,17 @@ def intermediate_output(dts, step_times, n_nodes, dt, t_n, wall_t0, vol_erupted,
     # Write Output:
     print('| --- Writing Output --- |')
     sim_metadata = [dts, step_times, n_nodes, model_clock_ratio, wall_elapsed, vol_error, dt, t_n]
-    fname = 'out.T+{:05.1f}hr.nc'.format(out_time/3600)
+
+    if p.simulation_tag is not None:
+        fname = 'out.T+{:05.1f}hr_{}.nc'.format(out_time/3600, p.simulation_tag)
+    else:
+        fname = 'out.T+{:05.1f}hr.nc'.format(out_time/3600)
+
     file = os.path.join(p.path_out, fname)
     write_nc(sim_metadata, file)
 #
 #-------------------------------------------------------------------------------
-def write_nc(sim_metadata, file=None):
-    if file == None:
-        file = os.path.join(p.path_out, 'out.nc')
-    #
+def write_nc(sim_metadata, file):
     dts, step_times, n_nodes, model_clock_ratio, wall_duration, vol_error, dt, t_n = sim_metadata
     dB = g.B_n - g.B0
     h_total = g.h_n + dB

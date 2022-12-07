@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from netCDF4 import Dataset
 #from geotiff import GeoTiff
@@ -168,7 +169,7 @@ def generate_model_terrain(
         p.dem_fill_level = fill_level
     #
     # save out to netCDF4
-    if file == None: file = os.path.join(p.path_out, 'out.nc')
+    # if file == None: file = os.path.join(p.path_out, 'out.nc')
     # --------------------------------------------------------------------------
     # Overwrite file
     #

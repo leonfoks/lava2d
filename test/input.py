@@ -31,9 +31,6 @@ sim.set_output( # where to store out.nc?
 
 #
 #-------------------------------------------------------------------------------
-sim.set_source( # set vent/fissure info: where is vent_nn.txt located?
-    path_to_vent_files      = ('..//example_vents//vent_01.txt')
-    )
 
 #-------------------------------------------------------------------------------
 sim.set_init( # set initialization type and file
@@ -95,10 +92,16 @@ sim.set_numerics( # set numerical method details
 
 #
 #-------------------------------------------------------------------------------
+sim.set_source( # set vent/fissure info: where is vent_nn.txt located?
+    path_to_vent_files      = ('..//example_vents')
+    )
+
+days = 9
+hrs = 24
 sim.set_runtime(
     max_iter = None, #one of them can be none, so the default value for both is none, if both none run till killed
-    max_time_hr = 1*2, # hr
-    out_times = [i*2. for i in range(1,2)], # hr, list of intermediate output times
+    max_time_hr = days*hrs, # hr
+    out_times = [i*hrs for i in range(1, days)], # hr, list of intermediate output times
     run_to_ocean = True
     )
 #

@@ -49,7 +49,7 @@ def read_source_data():
     for n in range(len(files)):
         # open each vent file:
         db = read_csv(files[n], header = 0, delimiter = '\t')
-        db['discharge'] = db['discharge'] / p.porosity # convert from DRE to Bulk Effusion Rate
+        db['discharge'] = db['discharge'] / (1.0 - p.porosity) # convert from DRE to Bulk Effusion Rate
         db.dropna(inplace = True)
         data = db.to_numpy().T
         times = data[0]

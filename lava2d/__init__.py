@@ -351,7 +351,7 @@ def run(mapdata_file = None):
         #
         # ----------------------------------------------------------------------
         # every n%10 = 0 (ie: n = 10, 20, 30 ...)
-        if n%10 == 0:
+        if n%500 == 0:
             print('|  Step (sub): {} ({})  |  dx: {} m  |  Grid: {} x {}  |  dt (type): {:.03f} s ({})  |  t: {:.02f} hr |'.format(n,substeps, p.dx, h_n.shape[0],h_n.shape[-1], dt, dt_type, t_n/3600.))
             #
         # if output time is reached

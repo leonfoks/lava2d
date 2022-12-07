@@ -44,6 +44,6 @@ setup(name='lava2d',
         'geotiff',
         'shapely',
         'fiona',
-
+        'rasterio',
     ],
 )

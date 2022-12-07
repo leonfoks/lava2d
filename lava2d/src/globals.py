@@ -1,7 +1,6 @@
-import os
 import numpy as np
 
-class params(object):
+class params():
     # Stefan-Boltzmann
     stefan_boltzmann = 5.67e-8 # W m-2 K-4
     # Gravity

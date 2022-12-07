@@ -1,6 +1,7 @@
+import os
 import numpy as np
 
-class params():
+class params(object):
     # Stefan-Boltzmann
     stefan_boltzmann = 5.67e-8 # W m-2 K-4
     # Gravity
@@ -16,8 +17,6 @@ class params():
     safety_factor = 0.9
     #
     vent_param_splines = []
-
-
 
 class grids():
     #

@@ -25,6 +25,7 @@ sim.set_topo( # set DEM info
 #
 #-------------------------------------------------------------------------------
 sim.set_output( # where to store out.nc?
+    path_out = 'output',
     simulation_tag = 'sim_{}'.format(sim_num)
     )
 

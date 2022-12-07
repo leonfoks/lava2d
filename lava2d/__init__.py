@@ -389,9 +389,9 @@ def run(mapdata_file = None):
     sim_metadata = [dts, step_times, n_nodes, model_clock_ratio, wall_t1-wall_t0, vol_error, dt, t_n]
 
     if p.simulation_tag is not None:
-        file = 'out_{}.nc'.format(p.simulation_tag)
+        file = os.path.join(p.path_out, 'out_{}.nc'.format(p.simulation_tag))
     else:
-        file = 'out.nc'
+        file = os.path.join(p.path_out, 'out.nc')
 
     write_nc(sim_metadata, file)
 #
@@ -539,11 +539,10 @@ def intermediate_output(dts, step_times, n_nodes, dt, t_n, wall_t0, vol_erupted,
     sim_metadata = [dts, step_times, n_nodes, model_clock_ratio, wall_elapsed, vol_error, dt, t_n]
 
     if p.simulation_tag is not None:
-        fname = 'out.T+{:05.1f}hr_{}.nc'.format(out_time/3600, p.simulation_tag)
+        file = '{}//out.T+{:05.1f}hr_{}.nc'.format(p.path_out, out_time/3600, p.simulation_tag)
     else:
-        fname = 'out.T+{:05.1f}hr.nc'.format(out_time/3600)
+        file = '{}//out.T+{:05.1f}hr.nc'.format(p.path_out, out_time/3600)
 
-    file = os.path.join(p.path_out, fname)
     write_nc(sim_metadata, file)
 #
 #-------------------------------------------------------------------------------
